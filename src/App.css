@@ -1,0 +1,325 @@
+/* ================================
+   GLOBAL
+================================ */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+body {
+  min-height: 100vh;
+  font-family: Arial, Helvetica, sans-serif;
+  background: #f4f6f8;
+  color: #1f2937;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+/* ================================
+   MAIN CONTAINER
+================================ */
+.main {
+  width: 900px;
+  height: 550px;
+  display: flex;
+  gap: 25px;
+  padding: 25px;
+  background: #ffffff;
+  border-radius: 24px;
+  box-shadow:
+    0 20px 50px rgba(0, 0, 0, 0.08),
+    0 5px 15px rgba(0, 0, 0, 0.04);
+  overflow: hidden;
+}
+/* ================================
+   TEXT SECTION
+================================ */
+.text {
+  width: 300px;
+  height: 500px;
+  padding: 30px 10px 30px 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.text h1 {
+  font-size: 36px;
+  line-height: 1.15;
+  font-weight: 700;
+  letter-spacing: -1px;
+  color: #111827;
+  margin-bottom: 20px;
+}
+.text h4 {
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 1.8;
+  color: #6b7280;
+}
+/* ================================
+   CARDS CONTAINER
+================================ */
+
+.boxes {
+  width: 500px;
+  height: 500px;
+  display: flex;
+  gap: 18px;
+  padding: 0 5px 15px 5px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-behavior: smooth;
+  align-items: center;
+}
+/* Custom scrollbar */
+.boxes::-webkit-scrollbar {
+  height: 7px;
+}
+.boxes::-webkit-scrollbar-track {
+  background: #eeeeee;
+  border-radius: 10px;
+}
+.boxes::-webkit-scrollbar-thumb {
+  background: #b8b8b8;
+  border-radius: 10px;
+}
+.boxes::-webkit-scrollbar-thumb:hover {
+  background: #888;
+}
+/* ================================
+   INDIVIDUAL CARD
+================================ */
+.box-1 {
+  flex: 0 0 300px;
+  width: 300px;
+  height: 500px;
+  position: relative;
+  border-radius: 25px;
+  overflow: hidden;
+  background: #111;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.box-1:hover {
+  transform: translateY(-8px);
+  box-shadow:
+    0 20px 40px rgba(0, 0, 0, 0.22);
+}
+/* ================================
+   CARD IMAGE
+================================ */
+img {
+  width: 100%;
+  height: 100%;
+
+  display: block;
+
+  object-fit: cover;
+
+  border-radius: 25px;
+
+  transition: transform 0.5s ease;
+}
+.box-1:hover img {
+  transform: scale(1.05);
+}
+/* Dark overlay */
+.box-1::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.75) 0%,
+    rgba(0, 0, 0, 0.25) 45%,
+    rgba(0, 0, 0, 0) 75%
+  );
+  pointer-events: none;
+}
+/* ================================
+   CARD TEXT
+================================ */
+.box-1 p {
+  position: absolute;
+  z-index: 2;
+  left: 0;
+  bottom: 95px;
+  width: 100%;
+  padding: 0 22px;
+  color: #ffffff;
+  font-size: 14px;
+  line-height: 1.7;
+  margin: 0;
+}
+/* ================================
+   BUTTON / BOTTOM LABEL
+================================ */
+.button {
+  position: absolute;
+  z-index: 3;
+  left: 15px;
+  bottom: 18px;
+  width: calc(100% - 30px);
+  height: 55px;
+  display: flex;
+  align-items: center;
+  border-radius: 14px;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+/* Button text */
+.button p {
+  position: static;
+  width: auto;
+  height: auto;
+  padding: 0 15px;
+  margin: 0;
+  color: #ffffff;
+  background: transparent;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: normal;
+  text-align: left;
+  border-radius: 0;
+}
+/* Button heading */
+.button h3 {
+  position: static;
+  width: auto;
+  height: auto;
+  margin-left: auto;
+  padding: 10px 15px;
+  color: #ffffff;
+  background: #8b5cf6;
+  border-radius: 10px;
+  font-size: 13px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+/* ================================
+   ROUND ICON
+================================ */
+
+.round {
+  position: absolute;
+z-index: 4;
+  top: 15px;
+  right: 15px;
+  width: 45px;
+  height: 45px;
+  margin: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.9);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+  transition: all 0.3s ease;
+}
+.round:hover {
+  transform: scale(1.1);
+  background: #ffffff;
+}
+/* ================================
+   OUTER SECTION
+================================ */
+.outer {
+  width: 100%;
+  min-height:100vh;
+  padding: 70px 40px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  justify-content: center;
+  align-items: center;
+  background:
+    radial-gradient(
+      circle at top left,
+      #ffffff 0%,
+      #f3f4f6 45%,
+      #e5e7eb 100%
+    );
+}
+/* ================================
+   PAGE HEADING
+================================ */
+.heading {
+  width: 100%;
+  height: auto;
+  padding: 0;
+  margin-bottom: 20px;
+  text-align: center;
+}
+.heading h1 {
+  font-size: 42px;
+  font-weight: 700;
+  color: #111827;
+  letter-spacing: -1.5px;
+  margin-bottom: 10px;
+}
+.heading p {
+  max-width: 800px;
+  margin: 0 auto;
+  color: #6b7280;
+  font-size: 15px;
+  line-height: 1.7;
+}
+/* ================================
+   RESPONSIVE
+================================ */
+
+@media (max-width: 950px) {
+  .main {
+    width: 95%;
+  }
+}
+@media (max-width: 750px) {
+  body {
+    align-items: flex-start;
+  }
+  .main {
+    width: 95%;
+    height: auto;
+    flex-direction: column;
+    padding: 20px;
+    margin: 30px auto;
+  }
+  .text {
+    width: 100%;
+    height: auto;
+    padding: 20px 10px;
+  }
+  .text h1 {
+    font-size: 30px;
+  }
+  .boxes {
+    width: 100%;
+    height: 500px;
+  }
+}
+@media (max-width: 500px) {
+  .outer {
+    padding: 40px 15px;
+  }
+  .heading h1 {
+    font-size: 32px;
+  }
+  .main {
+    border-radius: 18px;
+  }
+  .box-1 {
+    flex: 0 0 270px;
+    width: 270px;
+    height: 450px;
+  }
+  .boxes {
+    height: 450px;
+  }
+
+}
