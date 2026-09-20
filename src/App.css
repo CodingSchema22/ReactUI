@@ -1,48 +1,111 @@
-/* ================================
-   GLOBAL
-================================ */
 
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
+
+html {
+  width: 100%;
+  overflow-x: hidden;
+}
+
 body {
   min-height: 100vh;
+  width: 100%;
   font-family: Arial, Helvetica, sans-serif;
   background: #f4f6f8;
   color: #1f2937;
+}
+
+/* ================================
+   OUTER SECTION
+================================ */
+
+.outer {
+  width: 100%;
+  min-height: 100vh;
+  padding: 60px 30px;
   display: flex;
+  flex-direction: column;
+  gap: 30px;
   justify-content: center;
   align-items: center;
+
+  background:
+    radial-gradient(
+      circle at top left,
+      #ffffff 0%,
+      #f3f4f6 45%,
+      #e5e7eb 100%
+    );
 }
+
+/* ================================
+   PAGE HEADING
+================================ */
+
+.heading {
+  width: 100%;
+  max-width: 900px;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.heading h1 {
+  font-size: 42px;
+  font-weight: 700;
+  color: #111827;
+  letter-spacing: -1.5px;
+  margin-bottom: 10px;
+}
+
+.heading p {
+  max-width: 800px;
+  margin: 0 auto;
+  color: #6b7280;
+  font-size: 15px;
+  line-height: 1.7;
+}
+
 /* ================================
    MAIN CONTAINER
 ================================ */
+
 .main {
-  width: 900px;
-  height: 550px;
+  width: min(900px, 100%);
+  min-height: 550px;
+
   display: flex;
   gap: 25px;
   padding: 25px;
+
   background: #ffffff;
   border-radius: 24px;
+
   box-shadow:
     0 20px 50px rgba(0, 0, 0, 0.08),
     0 5px 15px rgba(0, 0, 0, 0.04);
+
   overflow: hidden;
 }
+
 /* ================================
    TEXT SECTION
 ================================ */
+
 .text {
+  flex: 0 0 300px;
   width: 300px;
-  height: 500px;
+
+  min-height: 500px;
   padding: 30px 10px 30px 15px;
+
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
+
 .text h1 {
   font-size: 36px;
   line-height: 1.15;
@@ -51,54 +114,73 @@ body {
   color: #111827;
   margin-bottom: 20px;
 }
+
 .text h4 {
   font-size: 15px;
   font-weight: 400;
   line-height: 1.8;
   color: #6b7280;
 }
+
 /* ================================
    CARDS CONTAINER
 ================================ */
 
 .boxes {
-  width: 500px;
+  flex: 1;
+  min-width: 0;
   height: 500px;
+
   display: flex;
   gap: 18px;
-  padding: 0 5px 15px 5px;
+  align-items: center;
+
+  padding: 0 5px 15px;
+
   overflow-x: auto;
   overflow-y: hidden;
+
   scroll-behavior: smooth;
-  align-items: center;
 }
+
 /* Custom scrollbar */
+
 .boxes::-webkit-scrollbar {
   height: 7px;
 }
+
 .boxes::-webkit-scrollbar-track {
   background: #eeeeee;
   border-radius: 10px;
 }
+
 .boxes::-webkit-scrollbar-thumb {
   background: #b8b8b8;
   border-radius: 10px;
 }
+
 .boxes::-webkit-scrollbar-thumb:hover {
   background: #888;
 }
+
 /* ================================
    INDIVIDUAL CARD
 ================================ */
+
 .box-1 {
   flex: 0 0 300px;
   width: 300px;
   height: 500px;
+
   position: relative;
+
   border-radius: 25px;
   overflow: hidden;
+
   background: #111;
+
   box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+
   transition:
     transform 0.3s ease,
     box-shadow 0.3s ease;
@@ -106,13 +188,16 @@ body {
 
 .box-1:hover {
   transform: translateY(-8px);
+
   box-shadow:
     0 20px 40px rgba(0, 0, 0, 0.22);
 }
+
 /* ================================
    CARD IMAGE
 ================================ */
-img {
+
+.box-1 img {
   width: 100%;
   height: 100%;
 
@@ -124,202 +209,397 @@ img {
 
   transition: transform 0.5s ease;
 }
+
 .box-1:hover img {
   transform: scale(1.05);
 }
+
 /* Dark overlay */
+
 .box-1::after {
   content: "";
+
   position: absolute;
   inset: 0;
+
   background: linear-gradient(
     to top,
     rgba(0, 0, 0, 0.75) 0%,
     rgba(0, 0, 0, 0.25) 45%,
     rgba(0, 0, 0, 0) 75%
   );
+
   pointer-events: none;
 }
+
 /* ================================
    CARD TEXT
 ================================ */
-.box-1 p {
+
+.box-1 > p {
   position: absolute;
+
   z-index: 2;
+
   left: 0;
   bottom: 95px;
+
   width: 100%;
+
   padding: 0 22px;
+
   color: #ffffff;
+
   font-size: 14px;
   line-height: 1.7;
+
   margin: 0;
 }
+
 /* ================================
    BUTTON / BOTTOM LABEL
 ================================ */
+
 .button {
   position: absolute;
+
   z-index: 3;
+
   left: 15px;
   bottom: 18px;
+
   width: calc(100% - 30px);
-  height: 55px;
+  min-height: 55px;
+
   display: flex;
   align-items: center;
+
   border-radius: 14px;
   overflow: hidden;
+
   background: rgba(255, 255, 255, 0.12);
+
   backdrop-filter: blur(10px);
+
   border: 1px solid rgba(255, 255, 255, 0.2);
 }
+
 /* Button text */
+
 .button p {
   position: static;
+
   width: auto;
   height: auto;
+
   padding: 0 15px;
   margin: 0;
+
   color: #ffffff;
+
   background: transparent;
+
   font-size: 13px;
   font-weight: 500;
   line-height: normal;
+
   text-align: left;
+
   border-radius: 0;
 }
+
 /* Button heading */
+
 .button h3 {
   position: static;
+
   width: auto;
   height: auto;
+
   margin-left: auto;
+
   padding: 10px 15px;
+
   color: #ffffff;
+
   background: #8b5cf6;
+
   border-radius: 10px;
+
   font-size: 13px;
   font-weight: 600;
+
   white-space: nowrap;
 }
+
 /* ================================
    ROUND ICON
 ================================ */
 
 .round {
   position: absolute;
-z-index: 4;
+
+  z-index: 4;
+
   top: 15px;
   right: 15px;
+
   width: 45px;
   height: 45px;
+
   margin: 0;
+
   border-radius: 50%;
+
   background: rgba(255, 255, 255, 0.9);
+
   display: flex;
   justify-content: center;
   align-items: center;
+
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+
   transition: all 0.3s ease;
 }
+
 .round:hover {
   transform: scale(1.1);
   background: #ffffff;
 }
+
 /* ================================
-   OUTER SECTION
-================================ */
-.outer {
-  width: 100%;
-  min-height:100vh;
-  padding: 70px 40px;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 30px;
-  justify-content: center;
-  align-items: center;
-  background:
-    radial-gradient(
-      circle at top left,
-      #ffffff 0%,
-      #f3f4f6 45%,
-      #e5e7eb 100%
-    );
-}
-/* ================================
-   PAGE HEADING
-================================ */
-.heading {
-  width: 100%;
-  height: auto;
-  padding: 0;
-  margin-bottom: 20px;
-  text-align: center;
-}
-.heading h1 {
-  font-size: 42px;
-  font-weight: 700;
-  color: #111827;
-  letter-spacing: -1.5px;
-  margin-bottom: 10px;
-}
-.heading p {
-  max-width: 800px;
-  margin: 0 auto;
-  color: #6b7280;
-  font-size: 15px;
-  line-height: 1.7;
-}
-/* ================================
-   RESPONSIVE
+   TABLET
 ================================ */
 
-@media (max-width: 950px) {
+@media (max-width: 900px) {
+
+  .outer {
+    padding: 50px 20px;
+  }
+
   .main {
-    width: 95%;
+    width: 100%;
+    max-width: 750px;
   }
-}
-@media (max-width: 750px) {
-  body {
-    align-items: flex-start;
-  }
-  .main {
-    width: 95%;
-    height: auto;
-    flex-direction: column;
-    padding: 20px;
-    margin: 30px auto;
-  }
+
   .text {
-    width: 100%;
-    height: auto;
-    padding: 20px 10px;
+    flex: 0 0 250px;
+    width: 250px;
   }
+
   .text h1 {
-    font-size: 30px;
+    font-size: 32px;
   }
+
   .boxes {
-    width: 100%;
     height: 500px;
   }
 }
-@media (max-width: 500px) {
+
+/* ================================
+   SMALL TABLET / MOBILE
+================================ */
+
+@media (max-width: 700px) {
+
   .outer {
     padding: 40px 15px;
-  }
-  .heading h1 {
-    font-size: 32px;
-  }
-  .main {
-    border-radius: 18px;
-  }
-  .box-1 {
-    flex: 0 0 270px;
-    width: 270px;
-    height: 450px;
-  }
-  .boxes {
-    height: 450px;
+    gap: 20px;
   }
 
+  .heading h1 {
+    font-size: 34px;
+  }
+
+  .heading p {
+    font-size: 14px;
+  }
+
+  .main {
+    width: 100%;
+    height: auto;
+    min-height: auto;
+
+    flex-direction: column;
+
+    padding: 20px;
+    gap: 15px;
+
+    border-radius: 20px;
+  }
+
+  .text {
+    width: 100%;
+    flex: none;
+
+    min-height: auto;
+    height: auto;
+
+    padding: 15px 10px;
+
+    text-align: center;
+    align-items: center;
+  }
+
+  .text h1 {
+    font-size: 30px;
+    margin-bottom: 12px;
+  }
+
+  .text h4 {
+    font-size: 14px;
+    line-height: 1.6;
+  }
+
+  .boxes {
+    width: 100%;
+    height: 480px;
+
+    flex: none;
+
+    padding: 5px 5px 15px;
+
+    overflow-x: auto;
+  }
+
+  .box-1 {
+    flex: 0 0 280px;
+    width: 280px;
+    height: 450px;
+  }
+}
+
+/* ================================
+   MOBILE
+================================ */
+
+@media (max-width: 500px) {
+
+  .outer {
+    padding: 30px 10px;
+  }
+
+  .heading {
+    padding: 0 10px;
+  }
+
+  .heading h1 {
+    font-size: 28px;
+    letter-spacing: -0.8px;
+  }
+
+  .heading p {
+    font-size: 13px;
+    line-height: 1.6;
+  }
+
+  .main {
+    width: 100%;
+    padding: 15px;
+
+    border-radius: 18px;
+  }
+
+  .text {
+    padding: 15px 5px;
+  }
+
+  .text h1 {
+    font-size: 27px;
+  }
+
+  .text h4 {
+    font-size: 13px;
+  }
+
+  .boxes {
+    height: 430px;
+    gap: 14px;
+  }
+
+  .box-1 {
+    flex: 0 0 250px;
+    width: 250px;
+    height: 410px;
+
+    border-radius: 20px;
+  }
+
+  .box-1 img {
+    border-radius: 20px;
+  }
+
+  .box-1 > p {
+    bottom: 90px;
+    padding: 0 18px;
+    font-size: 13px;
+  }
+
+  .button {
+    left: 12px;
+    bottom: 12px;
+
+    width: calc(100% - 24px);
+    min-height: 50px;
+  }
+
+  .button p {
+    padding: 0 10px;
+    font-size: 11px;
+  }
+
+  .button h3 {
+    padding: 8px 10px;
+    font-size: 11px;
+  }
+
+  .round {
+    width: 40px;
+    height: 40px;
+
+    top: 12px;
+    right: 12px;
+  }
+}
+
+/* ================================
+   VERY SMALL MOBILE
+================================ */
+
+@media (max-width: 360px) {
+
+  .outer {
+    padding: 25px 8px;
+  }
+
+  .heading h1 {
+    font-size: 25px;
+  }
+
+  .main {
+    padding: 12px;
+  }
+
+  .text h1 {
+    font-size: 24px;
+  }
+
+  .box-1 {
+    flex: 0 0 225px;
+    width: 225px;
+    height: 390px;
+  }
+
+  .boxes {
+    height: 410px;
+  }
+
+  .button p {
+    font-size: 10px;
+  }
+
+  .button h3 {
+    font-size: 10px;
+    padding: 7px 8px;
+  }
 }

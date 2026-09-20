@@ -9,7 +9,8 @@ const Main = () => {
         Prespective Customer segmentation
     </h1>
     <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium, quod amet dignissimos iusto eos incidunt facilis magnam inventore commodi quaerat quo! Rerum quia magnam quibusdam aliquid itaque accusantium aliquam excepturi.
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium,
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium,
     </p>
     </div>
     </div>
